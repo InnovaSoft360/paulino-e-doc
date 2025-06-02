@@ -1,0 +1,124 @@
+@import url("../config/app.css");
+header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    backdrop-filter: blur(80px);
+}
+.navbar{
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-menu .navbar-logo .navbar-logo-link{
+    width: 60%;
+}
+.nav-menu{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.nav-menu .nav-link{
+    transition: 0.5s ease;
+    position: relative;
+    padding: 0 10px;
+    color: #1E3A8A;
+    font-weight: bolder;
+    font-size: 14px;
+}
+#login{
+    background: #1E3A8A;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 35px;
+    border-radius: 3px;
+    transform: skew(-10deg);
+    color: var(--colorWhite002);
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+#login:hover{
+    background: #2563EB;
+    transition: all .3s ease-in-out;
+}
+.nav-menu .nav-link:hover{
+    color: #1E3A8A;
+}
+.nav-menu .nav-link::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 60%;
+    height: 2px;
+    background: #1E3A8A;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .4s;
+    margin-bottom: -4px;
+}
+.nav-menu .nav-link:hover::after{
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform .4s;
+}
+
+.menu-toggle{
+    display: none;
+    cursor: pointer;
+}
+.menu-toggle .bar{
+    display: block;
+    width: 28px;
+    height: 3px;
+    border-radius: 2px;
+    margin: 5px auto;
+    background-color: #1E3A8A;
+    transition: all 0.3s ease-in-out;
+}
+
+@media(max-width: 768px){
+    header{
+    background-color: #FFFFFF;
+    }
+    .menu-toggle{
+        display: block;
+    }
+    .menu-toggle.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .menu-toggle.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .nav-menu{
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        border-radius: 0 0 20px 20px;
+        background-color: #FFFFFF;
+        text-align: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        transition: 0.3s;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .nav-menu.active{
+        left: 0;
+    }
+    .nav-menu .navbar-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .nav-menu .nav-link{
+        padding: 20px 0;
+    }
+}
